@@ -20,7 +20,7 @@ const sections = [
     body: [
       `From merchants: store name and domain, contact and billing information, product catalog data (images, titles, variants) needed to power try-on, and usage analytics about how the app is configured and used.`,
       `From shoppers: photos or images a shopper uploads or captures to generate a virtual try-on render, body/fit inputs the shopper voluntarily provides (such as height or size), device and browser information, and interaction data (e.g. which products were tried on).`,
-      `Shopper photos are processed to generate try-on renders and are not used to build a marketing profile of the shopper, and are never sold.`,
+      `Shopper photos are never saved to our servers. They are held only on the shopper's own device for the duration of their try-on session, used solely to render the try-on preview, and are automatically cleared once the session ends. Shopper photos are not used to build a marketing profile and are never sold.`,
     ],
   },
   {
@@ -35,16 +35,16 @@ const sections = [
   {
     heading: '4. Image & Try-On Data Retention',
     body: [
-      `Shopper-uploaded photos are used to render a try-on result and are retained only as long as needed to provide the session and short-term support/debugging, after which they are automatically deleted from active storage — by default within 30 days, unless the shopper has saved a look to their own account or a merchant's data-retention plan specifies otherwise.`,
-      `Shoppers can request immediate deletion of an uploaded photo at any time, as described in Section 7.`,
+      `We do not save, store, or retain shopper photos on our servers at any point. An uploaded or captured image stays on the shopper's device, is used only to generate the on-screen try-on preview for that visit, and is automatically cleaned up as soon as the session ends (for example, when the tab or browser is closed).`,
+      `Because we never hold a copy of your photo after your session ends, there is nothing left on our side to delete — closing your session is itself the deletion.`,
     ],
   },
   {
     heading: '5. Sharing & Third Parties',
     body: [
       `Shopify: Baft operates on the Shopify platform and receives store and order data through Shopify's APIs, governed also by Shopify's own privacy policy.`,
-      `Service providers: we use vetted infrastructure, cloud hosting, and machine-learning inference providers solely to render try-on results and run the app — under contracts that prohibit them from using shopper photos for their own purposes.`,
-      `Merchants: a merchant using Baft on their store can see aggregate analytics but does not receive a shopper's raw uploaded photos by default.`,
+      `Service providers: rendering a try-on preview may briefly pass the image through infrastructure or machine-learning inference providers strictly to produce that preview in real time — under contracts that prohibit them from retaining or reusing shopper photos — after which no copy is kept by us or by them.`,
+      `Merchants: a merchant using Baft on their store can see aggregate analytics but never receives a shopper's uploaded photos, since we don't store them in the first place.`,
       `Legal: we may disclose data if required by law, subpoena, or to protect the rights, property, or safety of Baft, our merchants, or others.`,
       `We do not sell shopper photos or personal data to third parties.`,
     ],
@@ -59,7 +59,7 @@ const sections = [
     heading: '7. Your Rights & Choices',
     body: [
       `Depending on where you live (including under GDPR in the EU/UK and CCPA/CPRA in California), you may have the right to access, correct, delete, or export your personal data, and to object to or restrict certain processing.`,
-      `To exercise these rights — including requesting deletion of an uploaded try-on photo — contact us using the details in Section 10. We will respond within the timeframe required by applicable law.`,
+      `To exercise these rights over any other data we do hold about you, contact us using the details in Section 10. We will respond within the timeframe required by applicable law. Note that try-on photos specifically are never stored by us (see Section 4), so no deletion request is needed for those.`,
     ],
   },
   {
