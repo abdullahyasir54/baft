@@ -1,6 +1,6 @@
 export default function Quote() {
   return (
-    <section id="merchant" className="max-w-[1216px] mx-auto px-6 md:px-12 pb-20 scroll-mt-[90px]">
+    <section id="merchant" className="max-w-[1216px] mx-auto px-6 md:px-12 pb-14 sm:pb-20 scroll-mt-[90px]">
       <div data-reveal="" className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-12 items-end">
         <div className="md:col-span-2 flex flex-col gap-8">
           <span className="text-[clamp(80px,8vw,120px)] leading-[0.6] font-[760] text-baft-pink tracking-[-0.05em]">“</span>

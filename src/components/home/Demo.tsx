@@ -53,11 +53,11 @@ export default function Demo() {
   const renderLabel = phase === 'idle' ? 'Render try-on' : phase === 'rendering' ? 'Rendering…' : 'Render again'
 
   return (
-    <section id="demo" className="max-w-[1216px] mx-auto px-6 md:px-12 pb-20 scroll-mt-[90px]">
+    <section id="demo" className="max-w-[1216px] mx-auto px-6 md:px-12 pb-14 sm:pb-20 scroll-mt-[90px]">
       <div
         data-reveal=""
         data-theme="dark"
-        className="bg-baft-ink text-baft-snow rounded-[18px] p-[clamp(24px,3vw,40px)] grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] gap-10"
+        className="bg-baft-ink text-baft-snow rounded-[18px] p-[clamp(24px,3vw,40px)] grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] gap-8 sm:gap-10"
       >
         <div className="flex flex-col gap-6">
           <span className="inline-flex items-center gap-2 font-plex text-[11px] tracking-[0.22em] uppercase text-baft-neon">
@@ -145,7 +145,7 @@ export default function Demo() {
             </div>
 
             {phase === 'done' && (
-              <div className="absolute top-4 left-4 right-4 flex justify-between gap-2 pointer-events-none">
+              <div className="absolute top-4 left-4 right-4 flex flex-wrap justify-between gap-2 pointer-events-none">
                 <span className="font-plex text-[10px] tracking-[0.16em] uppercase bg-baft-neon text-baft-ink px-2.5 py-1.5 rounded-full">
                   Fit {fit}% · size {SIZES[size]} recommended
                 </span>

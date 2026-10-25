@@ -6,8 +6,8 @@ const columns = [
 
 export default function SiteFooter() {
   return (
-    <footer className="max-w-[1216px] mx-auto px-6 pb-6">
-      <div className="bg-baft-ink text-baft-snow rounded-[18px] pt-12 px-10 pb-7 flex flex-col gap-12">
+    <footer className="max-w-[1216px] mx-auto px-3 sm:px-6 pb-3 sm:pb-6">
+      <div className="bg-baft-ink text-baft-snow rounded-[18px] pt-10 px-6 sm:pt-12 sm:px-10 pb-7 flex flex-col gap-12">
         <div className="flex justify-between gap-12 flex-wrap">
           <div className="flex flex-col gap-4 max-w-[340px]">
             <img src="/images/baft-logo-white.png" alt="baft" className="h-10 w-auto block self-start" />
@@ -15,7 +15,7 @@ export default function SiteFooter() {
               Virtual try-on for Shopify. Neural fabric physics that drape your catalog onto every customer.
             </p>
           </div>
-          <div className="flex gap-16 flex-wrap">
+          <div className="flex gap-x-16 gap-y-8 flex-wrap">
             {columns.map(col => (
               <div key={col.title} className="flex flex-col gap-2.5">
                 <span className="font-plex text-[10px] tracking-[0.16em] uppercase text-baft-snow/50">{col.title}</span>

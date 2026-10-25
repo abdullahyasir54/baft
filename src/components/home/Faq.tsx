@@ -15,8 +15,8 @@ export default function Faq() {
   const [open, setOpen] = useState(0)
 
   return (
-    <section className="max-w-[1216px] mx-auto px-6 md:px-12 pb-20 flex flex-wrap gap-12 items-start">
-      <div data-reveal="" className="flex-[1_1_300px] flex flex-col gap-5 sticky top-[110px]">
+    <section className="max-w-[1216px] mx-auto px-6 md:px-12 pb-14 sm:pb-20 flex flex-wrap gap-8 lg:gap-12 items-start">
+      <div data-reveal="" className="flex-[1_1_300px] flex flex-col gap-5 lg:sticky lg:top-[110px]">
         <Eyebrow>FAQ</Eyebrow>
         <h2 className="text-[clamp(32px,3.6vw,44px)] font-[720] tracking-[-0.03em] leading-[1.05]">Questions. Straight answers.</h2>
         <p className="text-[16px]">Anything else? Write to hello@baft.agency.</p>
@@ -30,13 +30,13 @@ export default function Faq() {
                 type="button"
                 onClick={() => setOpen(isOpen ? -1 : i)}
                 aria-expanded={isOpen}
-                className="w-full bg-transparent cursor-pointer py-[18px] grid grid-cols-[48px_minmax(0,1fr)_24px] gap-4 items-baseline text-left text-baft-heading font-archivo text-[clamp(17px,1.6vw,21px)] font-[640] tracking-[-0.01em]"
+                className="w-full bg-transparent cursor-pointer py-[18px] grid grid-cols-[32px_minmax(0,1fr)_24px] sm:grid-cols-[48px_minmax(0,1fr)_24px] gap-4 items-baseline text-left text-baft-heading font-archivo text-[clamp(17px,1.6vw,21px)] font-[640] tracking-[-0.01em]"
               >
                 <span className="font-plex text-[10.5px] tracking-[0.08em] text-baft-faint">{String(i + 1).padStart(2, '0')}</span>
                 <span>{f.q}</span>
                 <span className="font-plex text-[18px] text-baft-accent text-right">{isOpen ? '−' : '+'}</span>
               </button>
-              {isOpen && <p className="pb-7 pl-16 text-[15.5px] max-w-[620px]">{f.a}</p>}
+              {isOpen && <p className="pb-7 pl-12 sm:pl-16 text-[15.5px] max-w-[620px]">{f.a}</p>}
             </div>
           )
         })}

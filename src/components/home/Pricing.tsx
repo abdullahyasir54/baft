@@ -24,13 +24,13 @@ export default function Pricing() {
   const bestIdx = costs.indexOf(Math.min(...costs))
 
   return (
-    <section id="pricing" className="max-w-[1216px] mx-auto px-6 md:px-12 py-20 border-t border-baft-line scroll-mt-[90px]">
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] gap-12 items-start">
-        <div data-reveal="" className="sticky top-[110px] flex flex-col gap-7">
+    <section id="pricing" className="max-w-[1216px] mx-auto px-6 md:px-12 py-14 sm:py-20 border-t border-baft-line scroll-mt-[90px]">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] gap-10 lg:gap-12 items-start">
+        <div data-reveal="" className="lg:sticky lg:top-[110px] flex flex-col gap-7">
           <Eyebrow>Pricing</Eyebrow>
           <h2 className="text-[clamp(36px,4.4vw,56px)] font-[720] tracking-[-0.03em] leading-[1.05]">Pay for fits. Not for seats.</h2>
 
-          <div className="flex flex-col gap-[14px] bg-baft-card border border-baft-line rounded-[18px] p-7">
+          <div className="flex flex-col gap-[14px] bg-baft-card border border-baft-line rounded-[18px] p-5 sm:p-7">
             <div className="flex justify-between items-baseline gap-3">
               <span className="mono-s">Try-ons per month</span>
               <span className="text-[36px] font-[740] tracking-[-0.04em] tabular-nums">{tryons.toLocaleString('en-US')}</span>
@@ -70,7 +70,7 @@ export default function Pricing() {
                 key={p.name}
                 data-reveal=""
                 onClick={() => setSelected(i)}
-                className={`border border-baft-line rounded-[18px] px-7 py-[22px] flex flex-col gap-[14px] cursor-pointer transition-all duration-[450ms] ease-signature ${
+                className={`border border-baft-line rounded-[18px] px-5 sm:px-7 py-[22px] flex flex-col gap-[14px] cursor-pointer transition-all duration-[450ms] ease-signature ${
                   hi ? 'bg-baft-ink text-baft-snow' : 'bg-baft-card text-baft-heading'
                 }`}
               >

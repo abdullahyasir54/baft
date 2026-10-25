@@ -33,7 +33,7 @@ const features: { kicker: string; title: string; body: string; image: string; ch
 
 export default function AdminFeatures() {
   return (
-    <section id="admin" className="max-w-[1216px] mx-auto px-6 md:px-12 pb-20 flex flex-col gap-14 scroll-mt-[90px]">
+    <section id="admin" className="max-w-[1216px] mx-auto px-6 md:px-12 pb-14 sm:pb-20 flex flex-col gap-12 sm:gap-14 scroll-mt-[90px]">
       <div data-reveal="" className="flex justify-between items-end gap-8 flex-wrap pb-8 border-b border-baft-ink">
         <h2 className="text-[clamp(36px,4.4vw,56px)] font-[720] tracking-[-0.03em] leading-[1.05] max-w-[16ch]">
           Live in minutes. <span className="mark">Yours to control.</span>
@@ -45,8 +45,8 @@ export default function AdminFeatures() {
         // Alternate text/image sides row by row
         const textFirst = i % 2 === 0
         return (
-          <div key={f.kicker} data-reveal="" className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-10 items-center">
-            <div className={`flex flex-col gap-[18px] max-w-[440px] ${textFirst ? 'order-1' : 'order-2'}`}>
+          <div key={f.kicker} data-reveal="" className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-6 md:gap-10 items-center">
+            <div className={`flex flex-col gap-[18px] max-w-[440px] order-1 ${textFirst ? 'md:order-1' : 'md:order-2'}`}>
               <span className="mono-kicker">{f.kicker}</span>
               <h3 className="text-[clamp(28px,3.2vw,44px)] font-[720] tracking-[-0.03em] leading-[1.05]">{f.title}</h3>
               <p className="text-[16.5px]">{f.body}</p>
@@ -54,7 +54,7 @@ export default function AdminFeatures() {
                 {f.chips.map(([label, tone]) => <Chip key={label} tone={tone}>{label}</Chip>)}
               </div>
             </div>
-            <div className={`rounded-[18px] overflow-hidden border border-baft-line bg-baft-card ${textFirst ? 'order-2' : 'order-1'}`}>
+            <div className={`rounded-[18px] overflow-hidden border border-baft-line bg-baft-card order-2 ${textFirst ? 'md:order-2' : 'md:order-1'}`}>
               <img src={f.image} alt={f.title} className="w-full h-auto block" />
             </div>
           </div>

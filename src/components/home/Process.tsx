@@ -48,10 +48,10 @@ export default function Process() {
   }, [])
 
   return (
-    <section id="process" className="max-w-[1216px] mx-auto px-6 md:px-12 py-20 grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] gap-16 items-start scroll-mt-[90px]">
-      <div className="sticky top-[110px] flex flex-col gap-6">
+    <section id="process" className="max-w-[1216px] mx-auto px-6 md:px-12 py-14 sm:py-20 grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] gap-10 lg:gap-16 items-start scroll-mt-[90px]">
+      <div className="lg:sticky lg:top-[110px] flex flex-col gap-6">
         <Eyebrow>Feature 01 · Storefront</Eyebrow>
-        <div className="text-[clamp(80px,9vw,140px)] font-[760] tracking-[-0.05em] leading-[0.85] text-baft-heading">
+        <div className="hidden lg:block text-[clamp(80px,9vw,140px)] font-[760] tracking-[-0.05em] leading-[0.85] text-baft-heading">
           {steps[active].n}
         </div>
         <h2 className="text-[clamp(32px,3.6vw,48px)] font-[720] tracking-[-0.03em] leading-[1.05]">
@@ -60,8 +60,8 @@ export default function Process() {
         <p className="text-[17px] max-w-[420px]">
           Shoppers tap Virtual Try-On on the product page, add a photo or use their camera, and watch the garment drape onto their own body in seconds.
         </p>
-        <span className="font-plex text-[10.5px] tracking-[0.12em] uppercase text-baft-accent">{steps[active].meta}</span>
-        <div className="flex gap-1.5 mt-2">
+        <span className="hidden lg:block font-plex text-[10.5px] tracking-[0.12em] uppercase text-baft-accent">{steps[active].meta}</span>
+        <div className="hidden lg:flex gap-1.5 mt-2">
           {steps.map((s, i) => (
             <span
               key={s.n}
@@ -71,15 +71,15 @@ export default function Process() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4 sm:gap-8">
         {steps.map((s, i) => (
           <div
             key={s.n}
             ref={el => { stepRefs.current[i] = el }}
             data-reveal=""
-            className="grid grid-cols-[56px_minmax(0,1fr)] gap-5 py-7 border-t border-baft-line content-start"
+            className="grid grid-cols-[36px_minmax(0,1fr)] sm:grid-cols-[56px_minmax(0,1fr)] gap-4 sm:gap-5 py-6 sm:py-7 border-t border-baft-line content-start"
           >
-            <div className="col-span-full rounded-[18px] overflow-hidden border border-baft-line bg-baft-card flex items-center justify-center p-6">
+            <div className="col-span-full rounded-[18px] overflow-hidden border border-baft-line bg-baft-card flex items-center justify-center p-4 sm:p-6">
               <img src={s.image} alt={s.title} className="max-w-full max-h-[380px] w-auto h-auto block" />
             </div>
             <span className="font-plex text-[11px] tracking-[0.22em] text-baft-accent">{s.n}</span>

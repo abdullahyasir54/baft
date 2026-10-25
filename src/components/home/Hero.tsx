@@ -9,11 +9,11 @@ const facts = [
 
 export default function Hero() {
   return (
-    <section id="top" className="max-w-[1216px] mx-auto px-6 md:px-12 pt-12 pb-10 flex flex-col gap-7 scroll-mt-[90px]">
+    <section id="top" className="max-w-[1216px] mx-auto px-6 md:px-12 pt-8 sm:pt-12 pb-10 flex flex-col gap-7 scroll-mt-[90px]">
       <h1 data-reveal="" className="text-[clamp(44px,6.4vw,92px)] font-[760] tracking-[-0.04em] leading-[0.95] max-w-[14ch]">
         See it on.<br />Before it <span className="mark">ships.</span>
       </h1>
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,400px),1fr))] gap-10 items-center">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,400px),1fr))] gap-8 sm:gap-10 items-center">
         <div data-reveal="" className="flex flex-col gap-7 pb-3">
           <p className="text-[clamp(18px,1.6vw,22px)] leading-[1.55] max-w-[480px] text-baft-heading">
             Baft drapes your full catalog onto every customer&apos;s body with neural fabric physics. Shoppers see the fit before they buy. Set up from the Shopify theme editor without a single line of code.
