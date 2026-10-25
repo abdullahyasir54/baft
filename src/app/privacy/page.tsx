@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import LegalPage from '@/components/home/LegalPage'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Baft AI',
@@ -91,39 +90,11 @@ const sections = [
 
 export default function PrivacyPolicy() {
   return (
-    <>
-      <Navbar />
-      <main className="bg-[#0c0c0c] text-white pt-40 pb-32 px-margin-mobile md:px-margin-desktop">
-        <div className="max-w-3xl mx-auto">
-          <p className="font-label-bold text-label-bold uppercase tracking-widest text-[#D6E702] mb-sm">
-            Legal
-          </p>
-          <h1 className="font-display-lg text-display-lg-mobile md:text-headline-lg mb-sm tracking-tight">
-            Privacy Policy
-          </h1>
-          <p className="font-body-md text-body-md text-white/40 mb-xl">
-            Last updated: July 13, 2026
-          </p>
-
-          <div className="flex flex-col gap-xl">
-            {sections.map(section => (
-              <section key={section.heading}>
-                <h2 className="font-headline-md text-headline-md mb-md">
-                  {section.heading}
-                </h2>
-                <div className="flex flex-col gap-sm">
-                  {section.body.map((paragraph, i) => (
-                    <p key={i} className="font-body-lg text-body-lg text-white/60">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </section>
-            ))}
-          </div>
-        </div>
-      </main>
-      <Footer />
-    </>
+    <LegalPage
+      title="Privacy Policy"
+      updated="July 13, 2026"
+      intro="What Baft collects from merchants and shoppers, how it is used, and the choices you have. Shopper photos are never stored."
+      sections={sections}
+    />
   )
 }

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import LegalPage from '@/components/home/LegalPage'
 
 export const metadata: Metadata = {
   title: 'Terms of Service | Baft AI',
@@ -95,39 +94,11 @@ const sections = [
 
 export default function TermsOfService() {
   return (
-    <>
-      <Navbar />
-      <main className="bg-[#0c0c0c] text-white pt-40 pb-32 px-margin-mobile md:px-margin-desktop">
-        <div className="max-w-3xl mx-auto">
-          <p className="font-label-bold text-label-bold uppercase tracking-widest text-[#D6E702] mb-sm">
-            Legal
-          </p>
-          <h1 className="font-display-lg text-display-lg-mobile md:text-headline-lg mb-sm tracking-tight">
-            Terms of Service
-          </h1>
-          <p className="font-body-md text-body-md text-white/40 mb-xl">
-            Last updated: July 13, 2026
-          </p>
-
-          <div className="flex flex-col gap-xl">
-            {sections.map(section => (
-              <section key={section.heading}>
-                <h2 className="font-headline-md text-headline-md mb-md">
-                  {section.heading}
-                </h2>
-                <div className="flex flex-col gap-sm">
-                  {section.body.map((paragraph, i) => (
-                    <p key={i} className="font-body-lg text-body-lg text-white/60">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </section>
-            ))}
-          </div>
-        </div>
-      </main>
-      <Footer />
-    </>
+    <LegalPage
+      title="Terms of Service"
+      updated="July 13, 2026"
+      intro="The terms that govern the Baft virtual try-on app for Shopify, for merchants and shoppers alike."
+      sections={sections}
+    />
   )
 }
