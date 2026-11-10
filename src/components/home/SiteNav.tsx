@@ -7,7 +7,6 @@ const links = [
   { label: 'Process', href: '/#process' },
   { label: 'Impact',  href: '/#features' },
   { label: 'Admin',   href: '/#admin' },
-  { label: 'Widget',  href: '/#demo' },
   { label: 'Pricing', href: '/#pricing' },
 ]
 
@@ -21,7 +20,7 @@ function LiveCounter({ renders }: { renders: number }) {
 }
 
 export default function SiteNav() {
-  const [renders, setRenders] = useState(418200)
+  const [renders, setRenders] = useState(418)
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -39,7 +38,7 @@ export default function SiteNav() {
 
   return (
     <div className="sticky top-0 z-20 px-3 pt-3 sm:px-6 sm:pt-4">
-      <nav className="max-w-[1216px] mx-auto bg-baft-ink text-baft-snow rounded-[18px] py-2.5 pr-2.5 pl-5 sm:py-3 sm:pr-[14px] sm:pl-6">
+      <nav className="max-w-[1440px] mx-auto bg-baft-ink text-baft-snow rounded-[18px] py-2.5 pr-2.5 pl-5 sm:py-3 sm:pr-[14px] sm:pl-6">
         <div className="flex items-center justify-between gap-5">
           <a href="/#top" className="flex items-center" onClick={() => setOpen(false)}>
             <img src="/images/baft-logo-white.png" alt="baft" className="h-[22px] w-auto block" />
@@ -55,7 +54,7 @@ export default function SiteNav() {
 
           <div className="flex items-center gap-2 sm:gap-4">
             <span className="hidden lg:inline-flex"><LiveCounter renders={renders} /></span>
-            <span className="hidden min-[360px]:inline-flex"><Button size="sm" href="/#pricing">Install on Shopify</Button></span>
+            <span className="hidden min-[360px]:inline-flex"><Button size="sm" href="https://apps.shopify.com/baft-virtual-try-on">Install on Shopify</Button></span>
             <button
               type="button"
               onClick={() => setOpen(o => !o)}

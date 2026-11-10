@@ -5,19 +5,19 @@ import Eyebrow from './Eyebrow'
 
 const steps = [
   {
-    n: '01', meta: 'Product page', image: '/images/step-product.png',
+    n: '01', meta: 'Product page', image: '/images/step-product-v2.png',
     title: 'Tap Virtual Try-On.',
     body: "The Baft button sits right beside Add to cart on your product page. A native theme block, in your store's own styling.",
     readout: 'Product page · Theme block · native',
   },
   {
-    n: '02', meta: 'Upload or camera', image: '/images/step-upload.png',
+    n: '02', meta: 'Upload or camera', image: '/images/step-upload-v2.png',
     title: 'Add a photo. Or use the camera.',
     body: 'Shoppers upload a portrait or use their webcam. The photo is processed securely and never stored.',
     readout: 'Upload or camera · Secure · not stored',
   },
   {
-    n: '03', meta: 'See it on', image: '/images/step-result.png',
+    n: '03', meta: 'See it on', image: '/images/step-result-v2.png',
     title: 'See it on you. Right there.',
     body: 'The garment drapes onto their own body in seconds. Save, share, add to cart. And rate whether the drape sits right.',
     readout: 'See it on · Add to cart · from try-on',
@@ -48,7 +48,7 @@ export default function Process() {
   }, [])
 
   return (
-    <section id="process" className="max-w-[1216px] mx-auto px-6 md:px-12 py-14 sm:py-20 grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] gap-10 lg:gap-16 items-start scroll-mt-[90px]">
+    <section id="process" className="max-w-[1440px] mx-auto px-6 md:px-12 py-12 sm:py-16 grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] gap-10 lg:gap-16 items-start scroll-mt-[90px]">
       <div className="lg:sticky lg:top-[110px] flex flex-col gap-6">
         <Eyebrow>Feature 01 · Storefront</Eyebrow>
         <div className="hidden lg:block text-[clamp(80px,9vw,140px)] font-[760] tracking-[-0.05em] leading-[0.85] text-baft-heading">
@@ -71,13 +71,13 @@ export default function Process() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 sm:gap-8">
+      <div className="flex flex-col gap-6 sm:gap-10">
         {steps.map((s, i) => (
           <div
             key={s.n}
             ref={el => { stepRefs.current[i] = el }}
             data-reveal=""
-            className="grid grid-cols-[36px_minmax(0,1fr)] sm:grid-cols-[56px_minmax(0,1fr)] gap-4 sm:gap-5 py-6 sm:py-7 border-t border-baft-line content-start"
+            className="grid grid-cols-[36px_minmax(0,1fr)] sm:grid-cols-[56px_minmax(0,1fr)] gap-4 sm:gap-5 py-2 content-start"
           >
             <div className="col-span-full rounded-[18px] overflow-hidden border border-baft-line bg-baft-card flex items-center justify-center p-4 sm:p-6">
               <img src={s.image} alt={s.title} className="max-w-full max-h-[380px] w-auto h-auto block" />

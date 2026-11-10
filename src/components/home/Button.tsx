@@ -47,7 +47,7 @@ export default function Button({ children, variant = 'primary', size = 'md', hre
 
   if (href) {
     return (
-      <a ref={el => { ref.current = el }} href={href} className={className} onMouseMove={onMouseMove} onMouseLeave={onMouseLeave}>
+      <a ref={el => { ref.current = el }} href={href} {...(/^https?:/.test(href) ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className={className} onMouseMove={onMouseMove} onMouseLeave={onMouseLeave}>
         {children}
       </a>
     )

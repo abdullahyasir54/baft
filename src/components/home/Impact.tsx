@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from 'react'
 
 const stats = [
-  { prefix: '−', value: 40, label: 'Return rate',       color: 'text-baft-pink-text',  body: 'Fewer "it didn\'t fit" returns once shoppers have seen the drape on their own body.' },
-  { prefix: '+', value: 18, label: 'Conversion lift',   color: 'text-baft-sky-text',   body: 'Median lift across merchants in the first 90 days after install.' },
-  { prefix: '',  value: 94, label: 'Satisfaction rate', color: 'text-baft-lav-text',   body: 'Shoppers rate every drape. 94% say it sits right.' },
-  { prefix: '',  value: 31, label: 'Try-on to cart',    color: 'text-baft-peach-text', body: 'Nearly a third of try-ons end in an add-to-cart event.' },
+  { prefix: '−', value: 40, label: 'Return rate',       body: 'Fewer "it didn\'t fit" returns once shoppers have seen the drape on their own body.' },
+  { prefix: '+', value: 18, label: 'Conversion lift',   body: 'Median lift across merchants in the first 90 days after install.' },
+  { prefix: '',  value: 94, label: 'Satisfaction rate', body: 'Shoppers rate every drape. 94% say it sits right.' },
+  { prefix: '',  value: 31, label: 'Try-on to cart',    body: 'Nearly a third of try-ons end in an add-to-cart event.' },
 ]
 
 const ease = (t: number) => 1 - Math.pow(1 - t, 3)
@@ -40,19 +40,19 @@ export default function Impact() {
   }, [])
 
   return (
-    <section id="features" ref={ref} className="max-w-[1216px] mx-auto px-6 md:px-12 pb-14 sm:pb-20 scroll-mt-[90px]">
-      <div data-reveal="" className="flex justify-between items-end gap-8 flex-wrap pb-8 border-b border-baft-ink">
+    <section id="features" ref={ref} className="max-w-[1440px] mx-auto px-6 md:px-12 py-12 sm:py-16 flex flex-col gap-8 scroll-mt-[90px]">
+      <div data-reveal="" className="flex justify-between items-end gap-8 flex-wrap">
         <h2 className="text-[clamp(36px,4.4vw,56px)] font-[720] tracking-[-0.03em] leading-[1.05] max-w-[14ch]">Hard metrics. Real stores.</h2>
         <span className="font-plex text-[10.5px] tracking-[0.12em] uppercase text-baft-body">Live merchants · measured vs. Pre-install baseline</span>
       </div>
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))]">
+      <div data-theme="dark" className="bg-baft-ink rounded-[18px] p-3 sm:p-4 grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-3">
         {stats.map(m => (
-          <div key={m.label} data-reveal="" className="py-6 sm:py-7 sm:pr-6 border-b sm:border-b-0 sm:border-r border-baft-line flex flex-col gap-[14px] hover:bg-baft-card">
-            <span className={`text-[clamp(44px,4.6vw,64px)] font-[740] tracking-[-0.045em] leading-[0.95] tabular-nums ${m.color}`}>
+          <div key={m.label} data-reveal="" className="bg-white/[0.05] rounded-[14px] p-6 sm:p-7 flex flex-col gap-[14px]">
+            <span className="text-[clamp(44px,4.6vw,64px)] font-[740] tracking-[-0.045em] leading-[0.95] tabular-nums text-baft-neon">
               {m.prefix}{Math.round(m.value * progress)}%
             </span>
-            <span className="font-plex text-[11px] tracking-[0.22em] uppercase text-baft-heading">{m.label}</span>
-            <p className="text-[14.5px] max-w-[28ch]">{m.body}</p>
+            <span className="font-plex text-[11px] tracking-[0.22em] uppercase text-baft-snow">{m.label}</span>
+            <p className="text-[14.5px] max-w-[28ch] text-baft-snow/65">{m.body}</p>
           </div>
         ))}
       </div>

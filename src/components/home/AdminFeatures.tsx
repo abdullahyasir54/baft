@@ -5,7 +5,7 @@ const features: { kicker: string; title: string; body: string; image: string; ch
     kicker: 'Feature 02 · Setup',
     title: 'Add it from the theme editor.',
     body: 'Drop the Baft try-on button onto any product page as a native theme block. No template edits, no Liquid, no developer.',
-    image: '/images/feature-theme-editor.png',
+    image: '/images/feature-theme-editor-v2.png',
     chips: [['No code', 'ink'], ['Theme block', 'sky']],
   },
   {
@@ -33,8 +33,8 @@ const features: { kicker: string; title: string; body: string; image: string; ch
 
 export default function AdminFeatures() {
   return (
-    <section id="admin" className="max-w-[1216px] mx-auto px-6 md:px-12 pb-14 sm:pb-20 flex flex-col gap-12 sm:gap-14 scroll-mt-[90px]">
-      <div data-reveal="" className="flex justify-between items-end gap-8 flex-wrap pb-8 border-b border-baft-ink">
+    <section id="admin" className="max-w-[1440px] mx-auto px-6 md:px-12 py-12 sm:py-16 flex flex-col gap-12 sm:gap-16 scroll-mt-[90px]">
+      <div data-reveal="" className="flex justify-between items-end gap-8 flex-wrap">
         <h2 className="text-[clamp(36px,4.4vw,56px)] font-[720] tracking-[-0.03em] leading-[1.05] max-w-[16ch]">
           Live in minutes. <span className="mark">Yours to control.</span>
         </h2>

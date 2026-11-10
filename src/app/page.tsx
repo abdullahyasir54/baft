@@ -3,8 +3,6 @@ import Hero from '@/components/home/Hero'
 import Process from '@/components/home/Process'
 import Impact from '@/components/home/Impact'
 import AdminFeatures from '@/components/home/AdminFeatures'
-import Demo from '@/components/home/Demo'
-import Quote from '@/components/home/Quote'
 import Pricing from '@/components/home/Pricing'
 import Faq from '@/components/home/Faq'
 import FinalCta from '@/components/home/FinalCta'
@@ -20,8 +18,6 @@ export default function Home() {
         <Process />
         <Impact />
         <AdminFeatures />
-        <Demo />
-        <Quote />
         <Pricing />
         <Faq />
         <FinalCta />

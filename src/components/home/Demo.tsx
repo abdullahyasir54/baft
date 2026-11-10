@@ -53,7 +53,7 @@ export default function Demo() {
   const renderLabel = phase === 'idle' ? 'Render try-on' : phase === 'rendering' ? 'Rendering…' : 'Render again'
 
   return (
-    <section id="demo" className="max-w-[1216px] mx-auto px-6 md:px-12 pb-14 sm:pb-20 scroll-mt-[90px]">
+    <section id="demo" className="max-w-[1440px] mx-auto px-6 md:px-12 pb-14 sm:pb-20 scroll-mt-[90px]">
       <div
         data-reveal=""
         data-theme="dark"

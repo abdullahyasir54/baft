@@ -8,24 +8,24 @@ const FAQS = [
   { q: 'Do I need to reshoot my catalog?', a: 'No. Baft works from the product photography you already have. Upload garment assets or model photos into the dashboard and the engine does the rest.' },
   { q: 'How long does setup take?', a: "About 60 seconds. Install the Shopify app, pick which collections get the try-on widget, and it's live on your product pages. No code required." },
   { q: 'What happens to customer photos?', a: "Baft never stores them. A shopper's photo is used only to render their try-on for that session, is never used for training, and is cleared when the session ends. Shoppers who want to keep a look can download the result to their own device. GDPR and CCPA compliant." },
-  { q: 'What does a try-on cost beyond the plan?', a: 'Every plan includes a monthly try-on allowance. Beyond it, extra try-ons are $0.08 each on any tier.' },
+  { q: 'What does a try-on cost beyond the plan?', a: 'Every plan includes a monthly try-on allowance. Beyond it, extra try-ons are $0.10 on Basic, $0.09 on Standard and $0.08 on Pro. The Free plan stops at 15 try-ons, and if you need more than our plans cover, contact sales for a custom plan.' },
 ]
 
 export default function Faq() {
   const [open, setOpen] = useState(0)
 
   return (
-    <section className="max-w-[1216px] mx-auto px-6 md:px-12 pb-14 sm:pb-20 flex flex-wrap gap-8 lg:gap-12 items-start">
+    <section className="max-w-[1440px] mx-auto px-6 md:px-12 py-12 sm:py-16 flex flex-wrap gap-10 lg:gap-16 items-start">
       <div data-reveal="" className="flex-[1_1_300px] flex flex-col gap-5 lg:sticky lg:top-[110px]">
         <Eyebrow>FAQ</Eyebrow>
         <h2 className="text-[clamp(32px,3.6vw,44px)] font-[720] tracking-[-0.03em] leading-[1.05]">Questions. Straight answers.</h2>
         <p className="text-[16px]">Anything else? Write to hello@baft.agency.</p>
       </div>
-      <div className="flex flex-col flex-[2_1_480px] min-w-0 border-t border-baft-ink">
+      <div className="flex flex-col flex-[2_1_480px] min-w-0 gap-2">
         {FAQS.map((f, i) => {
           const isOpen = open === i
           return (
-            <div key={f.q} data-reveal="" className="border-b border-baft-line">
+            <div key={f.q} data-reveal="">
               <button
                 type="button"
                 onClick={() => setOpen(isOpen ? -1 : i)}
