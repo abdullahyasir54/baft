@@ -5,7 +5,7 @@ import Eyebrow from './Eyebrow'
 
 const steps = [
   {
-    n: '01', meta: 'Product page', image: '/images/step-product-v2.png',
+    n: '01', meta: 'Product page', image: '/images/step-product-v3.png',
     title: 'Tap Virtual Try-On.',
     body: "The Baft button sits right beside Add to cart on your product page. A native theme block, in your store's own styling.",
     readout: 'Product page · Theme block · native',
@@ -17,7 +17,7 @@ const steps = [
     readout: 'Upload or camera · Secure · not stored',
   },
   {
-    n: '03', meta: 'See it on', image: '/images/step-result-v2.png',
+    n: '03', meta: 'See it on', image: '/images/step-result-v3.png',
     title: 'See it on you. Right there.',
     body: 'The garment drapes onto their own body in seconds. Save, share, add to cart. And rate whether the drape sits right.',
     readout: 'See it on · Add to cart · from try-on',

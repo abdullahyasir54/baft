@@ -32,7 +32,7 @@ export default function Hero() {
           </div>
         </div>
         <div data-reveal="" className="rounded-[18px] overflow-hidden border border-baft-line bg-baft-card">
-          <img src="/images/hero-flow.png" alt="Baft flow: upload your photo, pick a product, see it fitted on you" className="w-full h-auto block" />
+          <img src="/images/hero-flow-v2.png" alt="Baft flow: upload your photo, pick a product, see it fitted on you" className="w-full h-auto block" />
         </div>
       </div>
     </section>

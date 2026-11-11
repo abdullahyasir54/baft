@@ -3,27 +3,35 @@
 import { useState, type FormEvent } from 'react'
 import Button from './Button'
 
-const EMAIL = 'baft.support@gmail.com'
 const TOPICS = ['Sales · custom plan', 'Support', 'Something else']
 
 const field = 'w-full bg-baft-card border border-baft-line rounded-[12px] px-4 py-3 text-[15px] text-baft-heading font-archivo outline-none focus:border-baft-ink'
 
 export default function ContactForm() {
   const [topic, setTopic] = useState(TOPICS[0])
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [error, setError] = useState('')
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const f = new FormData(e.currentTarget)
-    const body = [
-      `Name: ${f.get('name')}`,
-      `Email: ${f.get('email')}`,
-      `Store: ${f.get('store') || '-'}`,
-      '',
-      `${f.get('message')}`,
-    ].join('\n')
-    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(`Baft · ${topic}`)}&body=${encodeURIComponent(body)}`
-    setSent(true)
+    const form = e.currentTarget
+    const f = new FormData(form)
+    setStatus('sending')
+    setError('')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...Object.fromEntries(f.entries()), topic }),
+      })
+      const json = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(json.error || 'Something went wrong.')
+      form.reset()
+      setStatus('sent')
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong.')
+      setStatus('error')
+    }
   }
 
   return (
@@ -45,9 +53,13 @@ export default function ContactForm() {
       </div>
       <label className="flex flex-col gap-2"><span className="mono-s">Store URL (optional)</span><input name="store" placeholder="your-store.myshopify.com" className={field} /></label>
       <label className="flex flex-col gap-2"><span className="mono-s">Message</span><textarea name="message" required rows={6} className={field} /></label>
+      <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
       <div className="flex items-center gap-4 flex-wrap">
-        <button type="submit" className="inline-flex items-center gap-2 font-archivo font-[640] rounded-full px-[26px] py-[13px] text-[14px] bg-[var(--action-primary-bg)] text-[var(--action-primary-text)] cursor-pointer">Send message →</button>
-        {sent && <span className="text-[13.5px]">Your email app should open. If not, write to {EMAIL}.</span>}
+        <button type="submit" disabled={status === 'sending'} className="inline-flex items-center gap-2 font-archivo font-[640] rounded-full px-[26px] py-[13px] text-[14px] bg-[var(--action-primary-bg)] text-[var(--action-primary-text)] cursor-pointer disabled:opacity-60">
+          {status === 'sending' ? 'Sending…' : 'Send message →'}
+        </button>
+        {status === 'sent' && <span className="text-[13.5px]">Thanks! Your message is on its way. We&apos;ll reply by email.</span>}
+        {status === 'error' && <span className="text-[13.5px] text-[#C2372A]">{error}</span>}
       </div>
     </form>
   )
