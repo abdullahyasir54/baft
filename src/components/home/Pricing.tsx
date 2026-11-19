@@ -55,7 +55,7 @@ export default function Pricing() {
         <Reveal className="flex flex-col gap-5">
           <Eyebrow>Pricing</Eyebrow>
           <h2 className="text-[clamp(34px,4vw,56px)] font-[720] tracking-[-0.03em] leading-[1.03]">Pay for fits. <span className="mark">Not for seats.</span></h2>
-          <p className="text-[16px] max-w-[440px]">Move the slider to your monthly try-ons and the right plan lights up. Start free and change plans whenever you like.</p>
+          <p className="text-[16px] max-w-[440px]">Move the slider to your monthly try-ons and the right plan lights up.</p>
         </Reveal>
 
         <Reveal delay={0.08}>

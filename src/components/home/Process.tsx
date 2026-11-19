@@ -1,7 +1,7 @@
 'use client'
 
 import Image, { type StaticImageData } from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'motion/react'
 import Eyebrow from './Eyebrow'
 import Reveal from '../ui/Reveal'
@@ -39,13 +39,12 @@ export default function Process() {
   const inView = useInView(ref, { amount: 0.35 })
   const running = inView && !paused
 
-  // Auto-advance while the section is on screen and the visitor isn't interacting.
-  useEffect(() => {
-    if (!running) return
+  // The progress bar is the clock: it pauses with hover/focus or when the section
+  // is off screen, and the next step starts only when its fill animation ends.
+  const onFilled = () => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const t = setTimeout(() => setActive(a => (a + 1) % steps.length), STEP_MS)
-    return () => clearTimeout(t)
-  }, [active, running])
+    setActive(a => (a + 1) % steps.length)
+  }
 
   return (
     <section id="process" ref={ref} className="max-w-[1440px] mx-auto px-6 md:px-12 py-12 sm:py-16 scroll-mt-[90px]">
@@ -103,7 +102,7 @@ export default function Process() {
                     </span>
                     {on && (
                       <span aria-hidden="true" className="absolute left-0 right-0 bottom-0 h-[3px] bg-baft-line-soft">
-                        <span key={active} className="fill-bar block h-full bg-baft-ink" style={{ ['--dur' as string]: `${STEP_MS}ms` }} />
+                        <span key={active} onAnimationEnd={onFilled} className="fill-bar block h-full bg-baft-ink" style={{ ['--dur' as string]: `${STEP_MS}ms` }} />
                       </span>
                     )}
                   </button>

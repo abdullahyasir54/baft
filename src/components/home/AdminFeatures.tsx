@@ -82,7 +82,7 @@ export default function AdminFeatures() {
             <Spotlight className="group h-full bg-baft-card border border-baft-line rounded-[22px] p-5 sm:p-7 flex flex-col gap-6 transition-shadow duration-500 hover:shadow-[0_30px_60px_-36px_rgba(22,18,31,0.4)]">
               <div className="flex flex-col gap-3.5">
                 <div className="flex items-center justify-between gap-3">
-                  <span className="mono-kicker">{String(i + 1).padStart(2, '0')} · {f.kicker}</span>
+                  <span className="mono-kicker whitespace-nowrap">{String(i + 1).padStart(2, '0')} · {f.kicker}</span>
                   <div className="flex gap-1.5 flex-wrap justify-end">
                     {f.chips.map(([label, tone]) => <Chip key={label} tone={tone}>{label}</Chip>)}
                   </div>
