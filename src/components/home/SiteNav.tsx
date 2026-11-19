@@ -97,6 +97,8 @@ export default function SiteNav() {
 
           <div className="flex items-center gap-2 sm:gap-4">
             <span className="hidden xl:inline-flex"><LiveCounter renders={renders} /></span>
+            {/* data-theme flips the ghost button to its on-dark colors */}
+            <span data-theme="dark" className="hidden md:inline-flex"><Button size="sm" variant="ghost" href="/contact">Contact sales</Button></span>
             <span className="hidden min-[360px]:inline-flex"><Button size="sm" href={INSTALL_URL}>Install on Shopify</Button></span>
             <button
               type="button"
@@ -134,7 +136,7 @@ export default function SiteNav() {
                     {l.label}
                   </a>
                 ))}
-                <a href="/contact" onClick={() => setOpen(false)} className="text-[17px] font-[640] tracking-[-0.01em] text-baft-snow no-underline py-3">Contact</a>
+                <a href="/contact" onClick={() => setOpen(false)} className="text-[17px] font-[640] tracking-[-0.01em] text-baft-snow no-underline py-3">Contact sales</a>
                 <div className="pt-3"><LiveCounter renders={renders} /></div>
               </div>
             </motion.div>
