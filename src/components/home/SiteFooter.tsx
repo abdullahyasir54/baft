@@ -28,7 +28,7 @@ export default function SiteFooter() {
         </div>
         <div className="border-t border-baft-snow/[0.14] pt-5 flex justify-between gap-4 flex-wrap font-plex text-[10.5px] tracking-[0.08em] uppercase text-baft-snow/50">
           <span>© 2026 Baft AI · Neural draping engine</span>
-          <span>Shopify app · Neural engine v4.0</span>
+          <span>Virtual try-on · Shopify app</span>
         </div>
       </div>
     </footer>

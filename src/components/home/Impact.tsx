@@ -6,7 +6,7 @@ import Reveal from '../ui/Reveal'
 import Spotlight from '../ui/Spotlight'
 
 const stats = [
-  { prefix: '−', value: 40, label: 'Return rate',       body: 'Fewer "it didn\'t fit" returns once shoppers have seen the drape on their own body.' },
+  { prefix: '−', value: 40, label: 'Return rate',       body: 'Fewer “it didn’t fit” returns once shoppers have seen the drape on their own body.' },
   { prefix: '+', value: 18, label: 'Conversion lift',   body: 'Median lift across merchants in the first 90 days after install.' },
   { prefix: '',  value: 94, label: 'Satisfaction rate', body: 'Shoppers rate every drape. 94% say it sits right.' },
   { prefix: '',  value: 31, label: 'Try-on to cart',    body: 'Nearly a third of try-ons end in an add-to-cart event.' },
@@ -36,7 +36,7 @@ export default function Impact() {
 
   return (
     <section id="features" className="max-w-[1440px] mx-auto px-3 sm:px-6 py-6 sm:py-8 scroll-mt-[90px]">
-      <div ref={ref} data-theme="dark" className="relative overflow-hidden bg-baft-ink rounded-[24px] px-5 py-10 sm:px-10 sm:py-14">
+      <div ref={ref} data-theme="dark" className="relative overflow-hidden bg-baft-ink rounded-[18px] px-5 py-10 sm:px-10 sm:py-14">
         <div aria-hidden="true" className="absolute -top-40 -right-24 w-[520px] h-[520px] rounded-full bg-[radial-gradient(circle,rgba(212,228,36,0.16),transparent_65%)] pointer-events-none" />
         <div aria-hidden="true" className="absolute -bottom-52 -left-24 w-[560px] h-[560px] rounded-full bg-[radial-gradient(circle,rgba(199,172,236,0.14),transparent_65%)] pointer-events-none" />
 
@@ -48,7 +48,7 @@ export default function Impact() {
         <div className="relative grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
           {stats.map((m, i) => (
             <Reveal key={m.label} delay={i * 0.07} className="h-full">
-              <Spotlight className="h-full bg-white/[0.045] ring-1 ring-white/[0.07] rounded-[18px] p-6 sm:p-7 flex flex-col gap-4 transition-transform duration-500 ease-signature hover:-translate-y-1">
+              <Spotlight className="h-full bg-white/[0.045] ring-1 ring-white/[0.07] rounded-[12px] p-6 sm:p-7 flex flex-col gap-4 transition-transform duration-500 ease-signature hover:-translate-y-1">
                 <span className="text-[clamp(52px,5vw,76px)] font-[740] tracking-[-0.05em] leading-[0.9] tabular-nums text-baft-neon">
                   {m.prefix}{Math.round(m.value * progress)}%
                 </span>

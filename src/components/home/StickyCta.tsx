@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react'
-import { ArrowRight } from 'lucide-react'
 
 const INSTALL_URL = 'https://apps.shopify.com/baft-virtual-try-on'
 
@@ -21,20 +20,20 @@ export default function StickyCta() {
       {show && (
         <motion.div
           key="sticky"
-          initial={{ y: 90, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 90, opacity: 0 }}
-          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ y: 90 }}
+          animate={{ y: 0 }}
+          exit={{ y: 90 }}
+          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="md:hidden fixed left-3 right-3 bottom-3 z-30 pb-[env(safe-area-inset-bottom)]"
         >
           <a
             href={INSTALL_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-between gap-3 bg-baft-ink text-baft-snow rounded-full pl-5 pr-2 py-2 no-underline shadow-[0_18px_40px_-14px_rgba(22,18,31,0.6)] ring-1 ring-white/[0.08]"
+            className="flex items-center justify-between gap-3 bg-baft-ink text-baft-snow rounded-full pl-5 pr-2 py-2 no-underline"
           >
-            <span className="text-[14px] font-[640]">Try Baft free on Shopify</span>
-            <span className="inline-flex items-center gap-1.5 bg-baft-neon text-baft-ink rounded-full px-4 py-2.5 text-[13px] font-[680]">Install <ArrowRight size={14} /></span>
+            <span className="text-[14px] font-[640]">Baft for Shopify · free plan</span>
+            <span className="bg-baft-neon text-baft-ink rounded-full px-4 py-2.5 text-[13px] font-[680]">Install →</span>
           </a>
         </motion.div>
       )}

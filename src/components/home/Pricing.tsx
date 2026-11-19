@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { animate, motion, useMotionValue, useTransform } from 'motion/react'
-import { ArrowRight, Check } from 'lucide-react'
 import Button from './Button'
-import Eyebrow from './Eyebrow'
 import Reveal from '../ui/Reveal'
 
 const INSTALL_URL = 'https://apps.shopify.com/baft-virtual-try-on'
@@ -53,13 +51,12 @@ export default function Pricing() {
     <section id="pricing" className="max-w-[1440px] mx-auto px-6 md:px-12 py-12 sm:py-16 scroll-mt-[90px]">
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-12 items-start mb-6">
         <Reveal className="flex flex-col gap-5">
-          <Eyebrow>Pricing</Eyebrow>
-          <h2 className="text-[clamp(34px,4vw,56px)] font-[720] tracking-[-0.03em] leading-[1.03]">Pay for fits. <span className="mark">Not for seats.</span></h2>
-          <p className="text-[16px] max-w-[440px]">Move the slider to your monthly try-ons and the right plan lights up.</p>
+          <h2 className="text-[clamp(34px,4vw,56px)] font-[720] tracking-[-0.03em] leading-[1.03]">Pay for fits. Not for seats.</h2>
+          <p className="text-[16px] max-w-[440px]">Set the slider to the try-ons you expect in a month. The plan that fits is the dark one.</p>
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="flex flex-col gap-3 bg-baft-card border border-baft-line rounded-[20px] px-5 py-5 sm:px-6 shadow-[0_24px_50px_-40px_rgba(22,18,31,0.5)]">
+          <div className="flex flex-col gap-3 bg-baft-card border border-baft-line rounded-[18px] px-5 py-5 sm:px-6 shadow-[0_24px_50px_-40px_rgba(22,18,31,0.5)]">
             <div className="flex justify-between items-baseline gap-3">
               <label htmlFor="tryons" className="mono-s">Try-ons per month</label>
               <span className="text-[30px] font-[740] tracking-[-0.04em] tabular-nums leading-none">{tryons.toLocaleString('en-US')}{tryons >= SLIDER_MAX ? '+' : ''}</span>
@@ -107,10 +104,8 @@ export default function Pricing() {
             <Reveal key={p.name} delay={i * 0.06} className="h-full">
               <div
                 onClick={() => setTryons(PRESETS[i])}
-                className={`relative h-full border rounded-[20px] px-4 py-5 flex flex-col gap-3.5 cursor-pointer transition-[background-color,color,border-color,transform,box-shadow] duration-500 ease-signature ${
-                  hi
-                    ? 'bg-baft-ink text-baft-snow border-baft-ink -translate-y-1.5 shadow-[0_30px_60px_-30px_rgba(22,18,31,0.65)]'
-                    : 'bg-baft-card text-baft-heading border-baft-line hover:-translate-y-0.5'
+                className={`relative h-full border rounded-[18px] px-4 py-5 flex flex-col gap-3.5 cursor-pointer transition-[background-color,color,border-color,transform,box-shadow] duration-500 ease-signature ${
+                  hi ? 'bg-baft-ink text-baft-snow border-baft-ink -translate-y-1.5 shadow-[0_30px_60px_-30px_rgba(22,18,31,0.65)]' : 'bg-baft-card text-baft-heading border-baft-line hover:-translate-y-1 hover:border-baft-ink'
                 }`}
               >
                 <div className="flex justify-between items-center gap-3 min-h-[22px]">
@@ -131,7 +126,7 @@ export default function Pricing() {
                 <ul className="flex flex-col gap-1.5 flex-1 pt-2">
                   {p.items.map(it => (
                     <li key={it} className="inline-flex gap-2 items-start text-[13px] xl:text-[12px] leading-[1.4] xl:whitespace-nowrap">
-                      <Check size={13} strokeWidth={3} className={`mt-[2px] flex-none ${hi ? 'text-baft-neon' : 'text-baft-accent'}`} />{it}
+                      <span aria-hidden="true" className="sq mt-[6px]" />{it}
                     </li>
                   ))}
                 </ul>
@@ -147,7 +142,7 @@ export default function Pricing() {
                     aria-label={`Install Baft on Shopify, ${p.name} plan`}
                     className={`inline-flex items-center gap-1 text-[13px] font-[640] no-underline hover:underline ${hi ? 'text-baft-neon' : 'text-baft-heading'}`}
                   >
-                    Install <ArrowRight size={13} />
+                    Install →
                   </a>
                 </div>
               </div>
@@ -159,7 +154,7 @@ export default function Pricing() {
       <Reveal delay={0.1}>
         <div
           onClick={() => setTryons(PRESETS[CUSTOM])}
-          className={`mt-3 border rounded-[20px] px-5 sm:px-7 py-6 flex flex-col md:flex-row md:items-center justify-between gap-5 cursor-pointer transition-[background-color,color,border-color] duration-500 ease-signature ${
+          className={`mt-3 border rounded-[18px] px-5 sm:px-7 py-6 flex flex-col md:flex-row md:items-center justify-between gap-5 cursor-pointer transition-colors duration-300 ${
             isCustom ? 'bg-baft-ink text-baft-snow border-baft-ink' : 'bg-baft-card text-baft-heading border-baft-line'
           }`}
         >
@@ -171,7 +166,7 @@ export default function Pricing() {
             <span className="text-[clamp(22px,2.2vw,28px)] font-[740] tracking-[-0.03em] leading-[1.1]">Need more try-ons than our plans cover?</span>
             <p className={`text-[14.5px] ${isCustom ? 'text-baft-snow/70' : ''}`}>Contact sales for a custom plan with a tailored try-on limit and pricing.</p>
           </div>
-          <div className="flex-none" onClick={e => e.stopPropagation()}><Button href="/contact">Contact sales <ArrowRight size={16} /></Button></div>
+          <div className="flex-none" onClick={e => e.stopPropagation()}><Button href="/contact">Contact sales →</Button></div>
         </div>
       </Reveal>
 

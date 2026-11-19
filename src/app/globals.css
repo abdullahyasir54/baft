@@ -136,6 +136,13 @@ body {
     -webkit-box-decoration-break: clone;
   }
 
+  /* A marker that starts its own line hangs its padding into the margin, so
+     the highlighted text lines up with the line above it. */
+  .mark-hang { margin-left: -8px; }
+
+  /* Square bullet, the same one the product UI uses. */
+  .sq { width: 6px; height: 6px; background: var(--neon); flex: none; display: inline-block; }
+
   /* Mono small: data labels, technical readouts */
   .mono-s {
     font-family: 'IBM Plex Mono', ui-monospace, monospace;

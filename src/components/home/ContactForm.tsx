@@ -58,7 +58,7 @@ export default function ContactForm() {
         <button type="submit" disabled={status === 'sending'} className="inline-flex items-center gap-2 font-archivo font-[640] rounded-full px-[26px] py-[13px] text-[14px] bg-[var(--action-primary-bg)] text-[var(--action-primary-text)] cursor-pointer disabled:opacity-60">
           {status === 'sending' ? 'Sending…' : 'Send message →'}
         </button>
-        {status === 'sent' && <span className="text-[13.5px]">Thanks! Your message is on its way. We&apos;ll reply by email.</span>}
+        {status === 'sent' && <span className="text-[13.5px]">Thanks! Your message is on its way. We’ll reply by email.</span>}
         {status === 'error' && <span className="text-[13.5px] text-[#C2372A]">{error}</span>}
       </div>
     </form>

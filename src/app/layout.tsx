@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: 'Baft AI | Virtual Try-On for Shopify',
     description,
     type: 'website',
-    images: ['/images/hero-flow-v2.png'],
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'A shopper’s photo, a linen suit, and the shopper wearing the suit' }],
   },
   twitter: { card: 'summary_large_image', title: 'Baft AI | Virtual Try-On for Shopify', description },
 }
