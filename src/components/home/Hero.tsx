@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useRef, type PointerEvent } from 'react'
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'motion/react'
 import Button from './Button'
+import DotField from '../ui/DotField'
 import heroImg from '../../../public/images/hero-flow-v2.png'
 
 const INSTALL_URL = 'https://apps.shopify.com/baft-virtual-try-on'
@@ -40,8 +41,7 @@ export default function Hero() {
   return (
     <section id="top" className="max-w-[1440px] mx-auto px-6 md:px-12 pt-10 sm:pt-14 pb-10 sm:pb-12 grid grid-cols-1 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] gap-10 lg:gap-8 items-center scroll-mt-[90px]">
       <div className="relative isolate flex flex-col gap-7">
-        <div aria-hidden="true" className="aurora" />
-        <div aria-hidden="true" className="dotgrid" />
+        <DotField className="dotfield" />
 
         <a
           href="#process"

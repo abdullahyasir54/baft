@@ -171,22 +171,15 @@ body {
 }
 .rise { animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: var(--d, 0ms); }
 
-/* Soft brand glows + dot grid behind the hero copy. Both stay inside the text
-   column: the hero graphic has an opaque paper background and would cut a
-   visible box out of anything painted behind it. */
-.aurora, .dotgrid { position: absolute; inset: -70px 0 -40px -90px; pointer-events: none; z-index: -1; }
-.aurora {
-  background:
-    radial-gradient(46% 50% at 22% 30%, rgba(212, 228, 36, 0.26), transparent 70%),
-    radial-gradient(44% 48% at 60% 8%, rgba(199, 172, 236, 0.36), transparent 70%),
-    radial-gradient(40% 44% at 46% 80%, rgba(113, 197, 248, 0.14), transparent 70%);
-  filter: blur(6px);
-}
-.dotgrid {
-  background-image: radial-gradient(rgba(22, 18, 31, 0.14) 1px, transparent 1px);
-  background-size: 22px 22px;
-  mask-image: radial-gradient(62% 58% at 36% 36%, #000, transparent 78%);
-  -webkit-mask-image: radial-gradient(62% 58% at 36% 36%, #000, transparent 78%);
+/* Animated dot field behind the hero copy. It stays inside the text column:
+   the hero graphic has an opaque paper background and would cut a visible box
+   out of anything painted behind it. The mask fades the field out before the
+   column's right edge and softens the top. */
+.dotfield {
+  position: absolute; inset: -40px 0 -48px -90px; width: calc(100% + 90px); height: calc(100% + 88px); z-index: -1;
+  opacity: 0.4;
+  mask-image: linear-gradient(to right, #000 62%, transparent 96%);
+  -webkit-mask-image: linear-gradient(to right, #000 62%, transparent 96%);
 }
 
 /* Cursor-following highlight; Spotlight.tsx sets --mx / --my. */
