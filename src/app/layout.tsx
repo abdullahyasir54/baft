@@ -1,16 +1,33 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
+import MotionProvider from '@/components/ui/MotionProvider'
 import './globals.css'
 
+const description = "Baft lets shoppers try on your apparel with a photo or their camera, right on the product page. Set up from the Shopify theme editor without a single line of code."
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://baft.agency'),
   title: 'Baft AI | Virtual Try-On for Shopify',
-  description: "Baft drapes your full catalog onto every customer's body with neural fabric physics. Shoppers see the fit before they buy. Set up from the Shopify theme editor without a single line of code.",
+  description,
+  openGraph: {
+    title: 'Baft AI | Virtual Try-On for Shopify',
+    description,
+    type: 'website',
+    images: ['/images/hero-flow-v2.png'],
+  },
+  twitter: { card: 'summary_large_image', title: 'Baft AI | Virtual Try-On for Shopify', description },
 }
+
+export const viewport: Viewport = { themeColor: '#16121F' }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="overflow-x-hidden">
-        {children}
+        {/* Without JS the scroll reveals never run, so show everything. */}
+        <noscript>
+          <style>{'[data-rv]{opacity:1!important;transform:none!important}'}</style>
+        </noscript>
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   )

@@ -1,6 +1,9 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { useInView } from 'motion/react'
+import Reveal from '../ui/Reveal'
+import Spotlight from '../ui/Spotlight'
 
 const stats = [
   { prefix: '−', value: 40, label: 'Return rate',       body: 'Fewer "it didn\'t fit" returns once shoppers have seen the drape on their own body.' },
@@ -12,49 +15,52 @@ const stats = [
 const ease = (t: number) => 1 - Math.pow(1 - t, 3)
 
 export default function Impact() {
-  const ref = useRef<HTMLElement>(null)
-  // 0 → 1 progress of the count-up, eased over 1.6s once the section is visible
+  const ref = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { once: true, amount: 0.3 })
+  // 0 → 1 progress of the count-up, eased over 1.6s once the panel is visible
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setProgress(1)
-      return
-    }
+    if (!inView) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setProgress(1); return }
     let raf = 0
-    const io = new IntersectionObserver(entries => {
-      if (!entries.some(e => e.isIntersecting)) return
-      io.disconnect()
-      const t0 = performance.now()
-      const tick = (now: number) => {
-        const t = Math.min(1, (now - t0) / 1600)
-        setProgress(ease(t))
-        if (t < 1) raf = requestAnimationFrame(tick)
-      }
-      raf = requestAnimationFrame(tick)
-    }, { threshold: 0.15 })
-    io.observe(el)
-    return () => { io.disconnect(); cancelAnimationFrame(raf) }
-  }, [])
+    const t0 = performance.now()
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - t0) / 1600)
+      setProgress(ease(t))
+      if (t < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [inView])
 
   return (
-    <section id="features" ref={ref} className="max-w-[1440px] mx-auto px-6 md:px-12 py-12 sm:py-16 flex flex-col gap-8 scroll-mt-[90px]">
-      <div data-reveal="" className="flex justify-between items-end gap-8 flex-wrap">
-        <h2 className="text-[clamp(36px,4.4vw,56px)] font-[720] tracking-[-0.03em] leading-[1.05] max-w-[14ch]">Hard metrics. Real stores.</h2>
-        <span className="font-plex text-[10.5px] tracking-[0.12em] uppercase text-baft-body">Live merchants · measured vs. Pre-install baseline</span>
-      </div>
-      <div data-theme="dark" className="bg-baft-ink rounded-[18px] p-3 sm:p-4 grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-3">
-        {stats.map(m => (
-          <div key={m.label} data-reveal="" className="bg-white/[0.05] rounded-[14px] p-6 sm:p-7 flex flex-col gap-[14px]">
-            <span className="text-[clamp(44px,4.6vw,64px)] font-[740] tracking-[-0.045em] leading-[0.95] tabular-nums text-baft-neon">
-              {m.prefix}{Math.round(m.value * progress)}%
-            </span>
-            <span className="font-plex text-[11px] tracking-[0.22em] uppercase text-baft-snow">{m.label}</span>
-            <p className="text-[14.5px] max-w-[28ch] text-baft-snow/65">{m.body}</p>
-          </div>
-        ))}
+    <section id="features" className="max-w-[1440px] mx-auto px-3 sm:px-6 py-6 sm:py-8 scroll-mt-[90px]">
+      <div ref={ref} data-theme="dark" className="relative overflow-hidden bg-baft-ink rounded-[24px] px-5 py-10 sm:px-10 sm:py-14">
+        <div aria-hidden="true" className="absolute -top-40 -right-24 w-[520px] h-[520px] rounded-full bg-[radial-gradient(circle,rgba(212,228,36,0.16),transparent_65%)] pointer-events-none" />
+        <div aria-hidden="true" className="absolute -bottom-52 -left-24 w-[560px] h-[560px] rounded-full bg-[radial-gradient(circle,rgba(199,172,236,0.14),transparent_65%)] pointer-events-none" />
+
+        <Reveal className="relative flex justify-between items-end gap-6 flex-wrap mb-8 sm:mb-10">
+          <h2 className="text-[clamp(34px,4vw,56px)] font-[720] tracking-[-0.03em] leading-[1.03] max-w-[14ch] text-baft-snow">Hard metrics. Real stores.</h2>
+          <span className="font-plex text-[10.5px] tracking-[0.12em] uppercase text-baft-snow/55">Live merchants · measured vs. pre-install baseline</span>
+        </Reveal>
+
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
+          {stats.map((m, i) => (
+            <Reveal key={m.label} delay={i * 0.07} className="h-full">
+              <Spotlight className="h-full bg-white/[0.045] ring-1 ring-white/[0.07] rounded-[18px] p-6 sm:p-7 flex flex-col gap-4 transition-transform duration-500 ease-signature hover:-translate-y-1">
+                <span className="text-[clamp(52px,5vw,76px)] font-[740] tracking-[-0.05em] leading-[0.9] tabular-nums text-baft-neon">
+                  {m.prefix}{Math.round(m.value * progress)}%
+                </span>
+                <span aria-hidden="true" className="block h-[3px] rounded-full bg-white/[0.08] overflow-hidden">
+                  <span className="block h-full bg-baft-neon rounded-full origin-left" style={{ transform: `scaleX(${(m.value / 100) * progress})` }} />
+                </span>
+                <span className="font-plex text-[11px] tracking-[0.22em] uppercase text-baft-snow">{m.label}</span>
+                <p className="text-[14.5px] max-w-[30ch] text-baft-snow/65">{m.body}</p>
+              </Spotlight>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   )

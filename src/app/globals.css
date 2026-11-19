@@ -155,17 +155,64 @@ body {
   }
 }
 
-/* Slide-in-from-left reveal; RevealObserver flips data-reveal to "in". */
-[data-reveal] {
-  opacity: 0;
-  transform: translateX(-72px);
-  filter: blur(6px);
-  transition:
-    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 1s cubic-bezier(0.16, 1, 0.3, 1);
+/* ---- Variant: premium surface effects ---- */
+
+/* Hero entrance runs in CSS so the first screen never depends on JS. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
 }
-[data-reveal='in'] { opacity: 1; transform: none; filter: none; }
+.rise { animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: var(--d, 0ms); }
+
+/* Soft brand glows + dot grid behind the hero copy. Both stay inside the text
+   column: the hero graphic has an opaque paper background and would cut a
+   visible box out of anything painted behind it. */
+.aurora, .dotgrid { position: absolute; inset: -70px 0 -40px -90px; pointer-events: none; z-index: -1; }
+.aurora {
+  background:
+    radial-gradient(46% 50% at 22% 30%, rgba(212, 228, 36, 0.26), transparent 70%),
+    radial-gradient(44% 48% at 60% 8%, rgba(199, 172, 236, 0.36), transparent 70%),
+    radial-gradient(40% 44% at 46% 80%, rgba(113, 197, 248, 0.14), transparent 70%);
+  filter: blur(6px);
+}
+.dotgrid {
+  background-image: radial-gradient(rgba(22, 18, 31, 0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(62% 58% at 36% 36%, #000, transparent 78%);
+  -webkit-mask-image: radial-gradient(62% 58% at 36% 36%, #000, transparent 78%);
+}
+
+/* Cursor-following highlight; Spotlight.tsx sets --mx / --my. */
+.spotlight { position: relative; isolation: isolate; }
+.spotlight::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
+  opacity: 0; transition: opacity 0.35s ease;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), var(--spot, rgba(212, 228, 36, 0.16)), transparent 65%);
+}
+.spotlight:hover::before { opacity: 1; }
+.spotlight > * { position: relative; z-index: 1; }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+@keyframes fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.fill-bar { transform-origin: left; animation: fill var(--dur, 5s) linear both; }
+.paused .fill-bar { animation-play-state: paused; }
+
+/* Custom range slider for the pricing calculator. */
+.baft input[type='range'].range {
+  -webkit-appearance: none; appearance: none; height: 6px; border-radius: 999px; outline-offset: 6px;
+  background: linear-gradient(to right, var(--ink) var(--pct, 0%), var(--border) var(--pct, 0%));
+}
+.baft input[type='range'].range::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 999px;
+  background: var(--neon); border: 3px solid var(--ink); cursor: grab; transition: transform 0.15s ease;
+}
+.baft input[type='range'].range::-webkit-slider-thumb:active { cursor: grabbing; transform: scale(1.15); }
+.baft input[type='range'].range::-moz-range-thumb {
+  width: 16px; height: 16px; border-radius: 999px; background: var(--neon); border: 3px solid var(--ink); cursor: grab;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .baft *, .baft *::before, .baft *::after {
